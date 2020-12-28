@@ -4,16 +4,16 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
 
 // WETH is WFUSE in that context
-const WFUSE_ADDRESS = '0x0BE9e53fd7EDaC9F859882AfdDa116645287C629'
-const WFUSE_USDC_PAIR = '0x9f17b1895633E855b8b1C1D0Ade9B3B72EB0590C' // created 10008355
-const WFUSE_DAI_PAIR = '0x6cF952247f270BDd28d96200D8F97eF0f8F8E090' // created block 10042267
-const WFUSE_USDT_PAIR = '0x8a81984D2DF356B49d182910bbB935897450d7e8' // created block 10093341
+const WFUSE_ADDRESS = '0x0be9e53fd7edac9f859882afdda116645287c629'
+const WFUSE_USDC_PAIR = '0x9f17b1895633e855b8b1c1d0ade9b3b72eb0590c' // created 10008355
+const WFUSE_DAI_PAIR = '0x6cf952247f270bdd28d96200d8f97ef0f8f8e090' // created block 10042267
+const WFUSE_USDT_PAIR = '0x8a81984d2df356b49d182910bbb935897450d7e8' // created block 10093341
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
   let daiPair = Pair.load(WFUSE_DAI_PAIR) // dai is token1
   let usdcPair = Pair.load(WFUSE_USDC_PAIR) // usdc is token1
-  let usdtPair = Pair.load(WFUSE_USDT_PAIR) // usdt is token1
+  let usdtPair = Pair.load(WFUSE_USDT_PAIR) // usdt is token1vo
 
   // all 3 have been created
   if (daiPair !== null && usdcPair !== null && usdtPair !== null) {
@@ -21,19 +21,19 @@ export function getEthPriceInUSD(): BigDecimal {
     let daiWeight = daiPair.reserve0.div(totalLiquidityETH)
     let usdcWeight = usdcPair.reserve0.div(totalLiquidityETH)
     let usdtWeight = usdtPair.reserve0.div(totalLiquidityETH)
-    return daiPair.token0Price
+    return daiPair.token1Price
       .times(daiWeight)
-      .plus(usdcPair.token0Price.times(usdcWeight))
-      .plus(usdtPair.token0Price.times(usdtWeight))
+      .plus(usdcPair.token1Price.times(usdcWeight))
+      .plus(usdtPair.token1Price.times(usdtWeight))
     // dai and USDC have been created
   } else if (daiPair !== null && usdcPair !== null) {
     let totalLiquidityETH = daiPair.reserve0.plus(usdcPair.reserve0)
     let daiWeight = daiPair.reserve0.div(totalLiquidityETH)
     let usdcWeight = usdcPair.reserve0.div(totalLiquidityETH)
-    return daiPair.token0Price.times(daiWeight).plus(usdcPair.token0Price.times(usdcWeight))
+    return daiPair.token1Price.times(daiWeight).plus(usdcPair.token1Price.times(usdcWeight))
     // USDC is the only pair so far
   } else if (usdcPair !== null) {
-    return usdcPair.token0Price
+    return usdcPair.token1Price
   } else {
     return ZERO_BD
   }
@@ -41,11 +41,11 @@ export function getEthPriceInUSD(): BigDecimal {
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  '0x0BE9e53fd7EDaC9F859882AfdDa116645287C629', // WFUSE
-  '0x94Ba7A27c7A95863d1bdC7645AC2951E0cca06bA', // DAI
-  '0x620fd5fa44BE6af63715Ef4E65DDFA0387aD13F5', // USDC
-  '0xFaDbBF8Ce7D5b7041bE672561bbA99f79c532e10', // USDT
-  '0xd8Bf72f3e163B9CF0C73dFdCC316417A5ac20670', // WETH
+  '0x0be9e53fd7edac9f859882afdda116645287c629', // WFUSE
+  '0x94ba7a27c7a95863d1bdc7645ac2951e0cca06ba', // DAI
+  '0x620fd5fa44be6af63715ef4e65ddfa0387ad13f5', // USDC
+  '0xfadbbf8ce7d5b7041be672561bba99f79c532e10', // USDT
+  '0xd8bf72f3e163b9cf0c73dfdcc316417a5ac20670', // WETH
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
