@@ -1,6 +1,6 @@
 /* eslint-disable prefer-const */
 import { Pair, Token, Bundle } from '../types/schema'
-import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
+import { BigDecimal, Address } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
 
 // WETH is WFUSE in that context
@@ -47,9 +47,6 @@ let WHITELIST: string[] = [
   '0xfadbbf8ce7d5b7041be672561bba99f79c532e10', // USDT
   '0xd8bf72f3e163b9cf0c73dfdcc316417a5ac20670', // WETH
 ]
-
-// minimum liquidity required to count towards tracked volume for pairs with small # of Lps
-let MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('400000')
 
 // minimum liquidity for price to get tracked
 let MINIMUM_LIQUIDITY_THRESHOLD_ETH = BigDecimal.fromString('2')
