@@ -5,9 +5,9 @@ import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
 
 // WETH is WFUSE in that context
 const WFUSE_ADDRESS = '0x0be9e53fd7edac9f859882afdda116645287c629'
-const WFUSE_USDC_PAIR = '0x9f17b1895633e855b8b1c1d0ade9b3b72eb0590c' // created 7506406
-const WFUSE_DAI_PAIR = '0x6cf952247f270bdd28d96200d8f97ef0f8f8e090' // created block 7458548
-const WFUSE_USDT_PAIR = '0x8a81984d2df356b49d182910bbb935897450d7e8' // created block 8481306
+const WFUSE_USDC_PAIR = '0xc79983b0754ac688bf54939add59bdf75916fda2' // created 7506406
+const WFUSE_DAI_PAIR = '0x7e6e52b4cb8320e63e30ee9d5c8752474e5a9627' // created block 7458548
+const WFUSE_USDT_PAIR = '0xca4df49cb6cfcab122b09f2c203820032005385e' // created block 8481306
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin

@@ -1,5 +1,5 @@
 {
-  "name": "fuseswap-v2-subgraph",
+  "name": "voltage-exchange",
   "version": "1.0.0",
   "repository": "https://github.com/fuseio/fuseswap-v2-subgraph",
   "license": "GPL-3.0-or-later",
@@ -7,7 +7,7 @@
     "codegen": "graph codegen --output-dir src/types/",
     "build": "graph build",
     "create-local": "graph create fuseio/fuseswap --node http://localhost:8020",
-    "deploy": "graph deploy fuseio/fuseswap --node http://localhost:8020/ --ipfs http://localhost:5001 --debug",
+    "deploy": "graph deploy voltfinance/voltage-exchange --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug",
     "remove-local": "graph remove --node http://localhost:8020/ fuseio/fuseswap",
     "watch-local": "graph deploy graphprotocol/Uniswap2 --watch --debug --node http://localhost:8020/ --ipfs http://localhost:5001"
   },

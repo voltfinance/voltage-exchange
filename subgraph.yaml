@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: Uniswap is a decentralized protocol for automated token exchange on Ethereum.
+description: Voltage is a decentralized protocol for automated token exchange on Fuse.
 repository: https://github.com/Uniswap/uniswap-v2-subgraph
 schema:
   file: ./schema.graphql
@@ -8,9 +8,9 @@ dataSources:
     name: Factory
     network: fuse
     source:
-      address: '0x1d1f1A7280D67246665Bb196F38553b469294f3a'
+      address: '0x1998e4b0f1f922367d8ec20600ea2b86df55f34e'
       abi: Factory
-      startBlock: 7318205
+      startBlock: 15644529
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
